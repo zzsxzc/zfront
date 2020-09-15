@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 插值表达式 支持简单的表达式计算-->
+        <div>{{msg}}</div>
+    </div>
+
+    <script type="text/javascript" src="js/vue.js"></script>
+        <script type="text/javascript">
+            var vm = new Vue({
+                //元素挂载位置(CSS选择器或者DOM元素)
+                el:'#app',
+                //模型数据(值是一个对象)
+                data:{
+                    msg:'Hello Vue'
+                }
+            });
+    </script>
+</body>
+</html>
