@@ -2,8 +2,12 @@
 <html>
 <head>
 <meta charset="utf-8">
+<meta name="description" content="Free Web tutorials on HTML, CSS, XML" />
 <title>htmlbase</title>
+<!-- 设置本页面内链接的默认地址，没注明地址的时候起作用 输入错误地址仍然会报错-->
+<base href="#" target="_blank"> 
 </head>
+<!-- <body background="picture/vally.jpg"> 可以设置网页背景图片-->
 <body>
 <!-- bgcolor="yellow"可以设置背景颜色 -->
 
@@ -44,7 +48,7 @@
 <!-- 短引用，感觉像是直接加了个分号 -->
 <p>WWF 的目标是：<q>构建人与自然和谐共存的世界。</q></p>
 
-<p>以下内容引用自 WWF 的网站：</p>
+<p id="target">以下内容引用自 WWF 的网站：</p>
 <blockquote cite="http://www.worldwildlife.org/who/index.html">
 五十年来，WWF 一直致力于保护自然界的未来。
 世界领先的环保组织，WWF 工作于 100 个国家，
@@ -84,6 +88,7 @@ var person = { firstName:"Bill", lastName:"Gates", age:50, eyeColor:"blue" }
 
 <p>Coding Example:</p>
 
+
 <code>
 var person = {
     firstName:"Bill",
@@ -112,10 +117,52 @@ var person = {
 
 <!-- 图像链接 -->
 <p>
-<a href="www.baidu.com">
-<img border="0" src="pickure/cap.png" />
-</a>
+<a href="https://www.baidu.com">
+<img border="0" src="picture/cap.png" />
+</a></br>
+<a href="https://www.baidu.com" target="_blank">空白页打开百度</a><!-- 需要包含https:// --></br>
+<a href="#target" >页面内跳转</a></br>
+<img src="picture/revolve.gif" alt="旋转的图片">
+<table border="1">
+    <tr>
+    <td>row 1, cell 1</td>
+    <td>row 1, cell 2</td>
+    </tr>
+    <tr>
+    <td>row 2, cell 1</td>
+    <td>row 2, cell 2</td>
+    </tr>
+    <td></td>
+    <td>row 1, cell 2</td>
+    </tr>
+    <tr>
+    <td>row 2, cell 1</td>
+    <td>row 2, cell 2</td>
+    </tr>
+</table>
+<!-- 无序列表 -->
+<ul>
+    <li>Coffee</li>
+    <li>Milk</li>
+</ul>
 </p>
+<!-- 有序列表 -->
+<ol>
+    <li>Coffee</li>
+    <li>Milk</li>
+</ol>
+<!-- 自定义列表项 -->
+<dl>
+    <dt>Coffee</dt>
+    <dd>Black hot drink</dd>
+    <dt>Milk</dt>
+    <dd>White cold drink</dd>
+</dl>
+<!-- 块元素显示以新行开始，内联元素不以新行开始，使用内联元素又想换行的时候，要记得加<br> -->
+<!-- 测试base -->
+<a href="hhlkhflskl">没注明链接地址</a>
+<!-- 空格实体 -->
+<p>中间有3个&nbsp;&nbsp;&nbsp;空格</p>
 
 </body>
 </html>
