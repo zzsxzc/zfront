@@ -163,6 +163,127 @@ var person = {
 <a href="hhlkhflskl">没注明链接地址</a>
 <!-- 空格实体 -->
 <p>中间有3个&nbsp;&nbsp;&nbsp;空格</p>
+<!-- 表单元素 -->
+<form>
+    <!-- 下拉列表 -->
+    <select name="firstchosecars">
+        <option value="audi">奥迪A6L</option>
+        <option value="toyotaprado">丰田霸道</option>
+        <option value="other">其他</option>
+    </select></br>
 
+    <!-- 文本域 -->
+    <textarea name="message" rows="10" cols="30">
+        这是一个文本域！
+    </textarea><br>
+    <!-- 按钮 -->
+    <button type="button" onclick="alert('Hello World!')">点我啊，崽种!</button>
+    
+    
+</form>
+<!-- html5表单元素 -->
+<form action="#">
+    <input list="browsers">
+    <datalist id="browsers">
+       <option value="Internet Explorer">
+       <option value="Firefox">
+       <option value="Chrome">
+       <option value="Opera">
+       <option value="Safari">
+    </datalist> 
+</form>
+<form>
+    <!-- 输入类型 -->
+    First name:<br>
+    <input type="text" name="firstname">
+    <br>
+    Last name:<br>
+    <input type="text" name="lastname"><br><br>
+
+
+    User name:<br>
+    <input type="text" name="username">
+    <br>
+    User password:<br>
+    <input type="password" name="psw"><br><br>
+
+    First name:<br>
+    <input type="text" name="firstname" value="Mickey">
+    <br>
+    Last name:<br>
+    <input type="text" name="lastname" value="Mouse">
+    <br>
+    <input type="submit" value="Submit"><br><br>
+
+    <!-- 省略value属性，按钮将获得默认文本 -->
+    First name:<br>
+    <input type="text" name="firstname" value="Mickey">
+    <br>
+    Last name:<br>
+    <input type="text" name="lastname" value="Mouse">
+    <br><br>
+    <input type="submit"><br><br>
+
+    <!-- 单选按钮 -->
+    <input type="radio" name="sex" value="male" checked>Male
+    <br>
+    <input type="radio" name="sex" value="female">Female<br><br>
+
+    <!-- 复选框 -->
+    <input type="checkbox" name="vehicle" value="Bike">I have a bike
+    <br>
+    <input type="checkbox" name="vehicle" value="Car">I have a car <br><br>
+
+    <!-- html5输入类型 -->
+    Quantity (between 1 and 5):
+    <input type="number" name="quantity" min="1" max="5"><br><br>
+
+    <!-- 输入属性 -->
+    First name:<br>
+    <input type="text" name="firstname" value="John">
+    <br>
+    Last name:<br>
+    <input type="text" name="lastname"><br><br>
+
+    <!-- 只读属性 -->
+    First name:<br>
+    <input type="text" name="firstname" value="John" readonly>
+    <br>
+    Last name:<br>
+    <input type="text" name="lastname"><br><br>
+
+    <!-- 禁用 -->
+    First name:<br>
+    <input type="text" name="firstname" value="John" disabled>
+    <br>
+    Last name:<br>
+    <input type="text" name="lastname"><br><br>
+
+    <!-- 规定输入字段的尺寸，可增加长度 -->
+    First name:<br>
+    <input type="text" name="firstname" value="John" size="40">
+    <br>
+    Last name:<br>
+    <input type="text" name="lastname"><br><br>
+
+    <!-- 规定输入字段的最大长度 -->
+    First name:<br>
+    <input type="text" name="firstname" maxlength="10">
+    <br>
+    Last name:<br>
+    <input type="text" name="lastname">
+</form><br>
+<!-- HTML5部分  -->
+<!-- 画布 -->
+<canvas id="myCanvas" width="200" height="100"></canvas>
+<script type="text/javascript">
+    var c=document.getElementById("myCanvas");
+    var cxt=c.getContext("2d");
+    cxt.fillStyle="#FF0000";
+    cxt.fillRect(0,0,150,75);
+</script>
+<!-- <script type="text/javascript">
+    alert("没有放在方法内就会自动执行的！");
+</script> -->
 </body>
 </html>
