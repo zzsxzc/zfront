@@ -6,6 +6,29 @@
 <title>htmlbase</title>
 <!-- 设置本页面内链接的默认地址，没注明地址的时候起作用 输入错误地址仍然会报错-->
 <base href="#" target="_blank"> 
+
+<style type="text/css">
+    #div1 {width:198px; height:66px;padding:10px;border:1px solid #aaaaaa;}
+    </style>
+    <script type="text/javascript">
+    function allowDrop(ev)
+    {
+    ev.preventDefault();
+    }
+    
+    function drag(ev)
+    {
+    ev.dataTransfer.setData("Text",ev.target.id);
+    }
+    
+    function drop(ev)
+    {
+    ev.preventDefault();
+    var data=ev.dataTransfer.getData("Text");
+    ev.target.appendChild(document.getElementById(data));
+    }
+</script>
+
 </head>
 <!-- <body background="picture/vally.jpg"> 可以设置网页背景图片-->
 <body>
@@ -319,41 +342,132 @@ var person = {
 
 <!-- API -->
 <!-- 定位 -->
+<p id="demo">点击这个按钮，获得您的坐标：</p>
+<button onclick="getLocation()">试一下</button>
 <script>
-    var x=document.getElementById("demo");
-    function getLocation()
-      {
-      if (navigator.geolocation)
-        {
-        navigator.geolocation.getCurrentPosition(showPosition);
-        }
-      else{x.innerHTML="Geolocation is not supported by this browser.";}
-      }
-    function showPosition(position)
-      {
-      x.innerHTML="Latitude: " + position.coords.latitude +
-      "<br />Longitude: " + position.coords.longitude;
-      }
+var x=document.getElementById("demo");
+function getLocation()
+  {
+  if (navigator.geolocation)
+    {
+    navigator.geolocation.getCurrentPosition(showPosition,showError);
+    }
+  else{x.innerHTML="Geolocation is not supported by this browser.";}
+  }
+function showPosition(position)
+  {
+  x.innerHTML="Latitude: " + position.coords.latitude + 
+  "<br />Longitude: " + position.coords.longitude;	
+  }
+function showError(error)
+  {
+  switch(error.code) 
+    {
+    case error.PERMISSION_DENIED:
+      x.innerHTML="User denied the request for Geolocation."
+      break;
+    case error.POSITION_UNAVAILABLE:
+      x.innerHTML="Location information is unavailable."
+      break;
+    case error.TIMEOUT:
+      x.innerHTML="The request to get user location timed out."
+      break;
+    case error.UNKNOWN_ERROR:
+      x.innerHTML="An unknown error occurred."
+      break;
+    }
+  }
+</script>
+<!-- 拖放 -->
+<p>请把 W3School 的图片拖放到矩形中：</p>
 
-      function showError(error)
-        {
-        switch(error.code)
-            {
-            case error.PERMISSION_DENIED:
-            x.innerHTML="User denied the request for Geolocation."
-            break;
-            case error.POSITION_UNAVAILABLE:
-            x.innerHTML="Location information is unavailable."
-            break;
-            case error.TIMEOUT:
-            x.innerHTML="The request to get user location timed out."
-            break;
-            case error.UNKNOWN_ERROR:
-            x.innerHTML="An unknown error occurred."
-            break;
-            }
-         }
+<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+<br />
+<img id="drag1" src="picture/head.png" draggable="true" ondragstart="drag(event)" />
+<!-- 本地存储 -->
+<div id="result"></div>
+
+<script>
+// Check browser support
+if (typeof(Storage) !== "undefined") {
+    // Store
+    localStorage.setItem("lastname", "这是本地存储的内容哦！");
+    // Retrieve
+    document.getElementById("result").innerHTML = localStorage.getItem("lastname");
+} else {
+    document.getElementById("result").innerHTML = "抱歉！您的浏览器不支持 Web Storage ...";
+}
 </script>
 
+<p><button onclick="clickCounter()" type="button">请点击这里！</button></p>
+<div id="result"></div>
+<p>请点击按钮使计数器递增。</p>
+<p>请关闭浏览器或标签页，然后再试一次，计数器将继续计数（不会重置）。</p>
+<script>
+    function clickCounter() {
+        if(typeof(Storage) !== "undefined") {
+            if (localStorage.clickcount) {
+                localStorage.clickcount = Number(localStorage.clickcount)+1;
+            } else {
+                localStorage.clickcount = 1;
+            }
+            document.getElementById("result").innerHTML = "您已经点击这个按钮 " + localStorage.clickcount + " 次。";
+        } else {
+            document.getElementById("result").innerHTML = "抱歉！您的浏览器不支持 Web Storage ...";
+        }
+    }
+</script>
+
+<p><button onclick="clickCounter()" type="button">请点击这里</button></p>
+<div id="result2"></div>
+<p>请点击按钮使计数器递增。</p>
+<p>请关闭浏览器或标签页，然后再试一次，计数器会重置。</p>
+<script>
+    function clickCounter2() {
+        if(typeof(Storage) !== "undefined") {
+            if (sessionStorage.clickcount2) {
+                sessionStorage.clickcount2 = Number(sessionStorage.clickcount2)+1;
+            } else {
+                sessionStorage.clickcount2 = 1;
+            }
+            document.getElementById("result2").innerHTML = "在本 session 中，您已经点击这个按钮 " + sessionStorage.clickcount2 + " 次。";
+        } else {
+            document.getElementById("result2").innerHTML = "抱歉！您的浏览器不支持 Web Storage ...";
+        }
+    }
+</script>
+<!-- webworks -->
+<p>计数: <output id="result"></output></p>
+<button onclick="startWorker()">开始 Worker</button> 
+<button onclick="stopWorker()">停止 Worker</button>
+<br /><br />
+
+<script>
+var w;
+
+function startWorker()
+{
+if(typeof(Worker)!=="undefined")
+  {
+  if(typeof(w)=="undefined")
+  {
+  w=new Worker("/js/demo_workers.js");
+  }
+  w.onmessage = function (event) {
+    //不管用
+    document.getElementById("result").innerHTML=event.data;
+    };
+  }
+else
+  {
+  document.getElementById("result").innerHTML="Sorry, your browser does not support Web Workers...";
+  }
+}
+
+function stopWorker()
+{ 
+w.terminate();
+}
+</script>
 </body>
 </html>
