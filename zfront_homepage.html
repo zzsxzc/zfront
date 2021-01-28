@@ -13,8 +13,8 @@
 </head>
 <body>
 
-<ul>
-  <li><a class="active" href="#home">Freedommxc</a></li>
+<ul class="nav">
+  <li class="active"><a  href="#home">Freedommxc</a></li>
   <li><a href="#about">WebAPP</a></li>
   <li><a href="#contact">手机APP</a></li>
   <li><a href="#about">桌面程序</a></li>
@@ -22,6 +22,15 @@
   <li><a href="#about">游戏</a></li>
   <li style="float:right"><a href="#about">关于</a></li>
 </ul>
+
+<script>
+    var li = document.querySelectorAll('.nav li');
+    for (var i = 0; i < li.length; i++)
+        li[i].onclick = function () {
+            for (var i = 0; i < li.length; i++) li[i].className = '';
+            this.className='active'
+        }
+</script>
 
 <div style="padding:20px;margin-top:30px;background-color:#fbfbfb;height:800px;">
 <h1>欢迎登录freedommxc.top</h1>
@@ -43,8 +52,9 @@
         </div>
     </div>
 </div>
-<!-- <script type="text/javascript">
-    var navnode = document.querySelector()
-</script> -->
+
+<!-- 引入jQuery和Vue -->
+<!-- <script type="text/javascript" src="js/jquery/jquery-3.5.1.min.js"></script>
+<script type="text/javascript" src="js/vue.js"></script> -->
 </body>
 </html>
