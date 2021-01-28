@@ -37,6 +37,47 @@ h1 {
     color: #4050FF;
 }
 
+h2{
+    margin: 0;
+    padding: 8px;
+    color: #4050FF;
+}
+
+hr{
+    margin-top: 20px;
+    width: 360px;
+    height: 2px;
+    border: none;
+    background-color: #4050FF;
+}
+
+.flow{
+    text-align: center;
+}
+
+button span {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 8px 14px;
+}
+
+/* button .learnmore{
+    background-color: #FF69B4;  
+} */
+
+.btnlearnmore{
+    border-style: solid;
+    border-color: antiquewhite;
+    background-color: #FF69B4;  
+}
+
+.btndownload{
+    border-style: solid;
+    border-color: antiquewhite;
+    background-color: #4050FF;  
+}
+
 .footer{
     width: 100%;
     overflow: hidden;
