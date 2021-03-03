@@ -7,6 +7,7 @@
 <link rel="stylesheet" type="text/css" href="css/zfront.css">
 <!-- <link rel="shortcut icon" href="icon/favicon.ico"> -->
 <link rel="shortcut icon" href="icon/iconx.png">
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <style>
     /* 内部样式表
     body {margin:0;} */
@@ -34,7 +35,7 @@
 </script> -->
 
 <div style="padding:20px;margin-top:30px;background-color:#fbfbfb;height:800px;">
-<h1>欢迎登录freedommxc.top</h1>
+<h1 id="name" v-bind:title="message">{{name}}</h1>
 
 </div>
 
@@ -55,6 +56,16 @@
 </div>
 
 <!-- 导航栏切换 -->
+<script>
+    var app = new Vue({
+        el:'#name',
+        data:{
+            name:'freedommxc',
+            message:'晓晨'
+        }
+    })
+</script>
+
 <script>
     var li = document.querySelectorAll('.nav li');
     for (var i = 0; i < li.length; i++)
