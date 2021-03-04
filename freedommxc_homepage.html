@@ -35,7 +35,10 @@
 </script> -->
 
 <div style="padding:20px;margin-top:30px;background-color:#fbfbfb;height:800px;">
-<h1 id="name" v-bind:title="message">{{name}}</h1>
+    <div id="name" v-if="seen">
+        <h1 v-bind:title="message">{{name}}</h1>
+    </div>
+
 
 </div>
 
@@ -55,17 +58,18 @@
     </div>
 </div>
 
-<!-- 导航栏切换 -->
 <script>
     var app = new Vue({
         el:'#name',
         data:{
             name:'freedommxc',
-            message:'freedommxc'
+            message:'freedommxc',
+            seen:true
         }
     })
 </script>
 
+<!-- 导航栏切换 -->
 <script>
     var li = document.querySelectorAll('.nav li');
     for (var i = 0; i < li.length; i++)
