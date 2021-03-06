@@ -6,6 +6,7 @@
 <!-- 外部样式表 -->
 <link rel="stylesheet" type="text/css" href="css/zfront.css">
 <link rel="shortcut icon" href="icon/iconx.png">
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <style>
     /* 内部样式表
     body {margin:0;} */
@@ -34,14 +35,16 @@
 
 <div style="padding:20px;margin-top:30px;background-color:#fbfbfb;height:800px;">
 <h1>游戏</h1>
-<div class="flow">
-    <h2>应用名</h2>
-    <div class="image">
-        <img width=200 heigth=200 src="image/test.png">
-    </div>        
-    <a href="https://github.com/zzsxzc" target="_blank"><button class="btnlearnmore"><span class="content">查看详情</span></button></a>
-    <!-- 压缩包会直接下载,txt和图片会直接打开 -->
-    <a href="download/testDownload.rar" download="testDownload.rar"><button class="btndownload"><span class="content">点击下载</span></button></a>
+<div id="zapplist">
+    <div class="flow" v-for="app in applist">
+        <h2>{{app.name}}</h2>
+        <div class="image">
+            <img width=200 heigth=200 v-bind:src="app.imageUrl">
+        </div>        
+        <a v-bind:href="app.desUrl" target="_blank"><button class="btnlearnmore"><span class="content">查看详情</span></button></a>
+        <!-- 压缩包会直接下载,txt和图片会直接打开 -->
+        <a v-bind:href="app.appUrl" target="_blank"><button class="btndownload"><span class="content">点击下载</span></button></a>
+    </div>
 </div>
 </div>
 
@@ -60,7 +63,27 @@
         </div>
     </div>
 </div>
-
+<script>
+    var app = new Vue({
+        el:'#zapplist',
+        data:{
+            applist:[
+                {
+                    name:"应用名",
+                    imageUrl:"image/test.png",
+                    desUrl:"https://github.com/zzsxzc",
+                    appUrl:"download/testDownload.rar"
+                },
+                {
+                    name:"应用名2",
+                    imageUrl:"image/test.png",
+                    desUrl:"https://github.com/zzsxzc",
+                    appUrl:"download/testDownload.rar"
+                }
+            ]
+        }
+    })
+</script>
 <!-- 导航栏切换 -->
 <script>
     var li = document.querySelectorAll('.nav li');
