@@ -40,11 +40,11 @@
     <div class="flow">
         <h2>{{app.name}}</h2>
         <div class="image">
-            <img width=200 heigth=200 src="{{app.imageUrl}}">
+            <img width=200 heigth=200 v-bind:src="app.imageUrl">
         </div>        
-        <a href={{app.desUrl}} target="_blank"><button class="btnlearnmore"><span class="content">查看详情</span></button></a>
+        <a v-bind:href="app.desUrl" target="_blank"><button class="btnlearnmore"><span class="content">查看详情</span></button></a>
         <!-- 压缩包会直接下载,txt和图片会直接打开 -->
-        <a href={{app.downloadFileUrl}} target="_blank"><button class="btndownload"><span class="content">点击进入</span></button></a>
+        <a v-bind:href="app.appUrl" target="_blank"><button class="btndownload"><span class="content">点击进入</span></button></a>
     </div>
 </div>
 <!-- 多个 -->
@@ -82,9 +82,9 @@
             applist:[
                 {
                     name:"应用名",
-                    iamgeUrl:"image/test.png",
-                    desUrl:"https://github.com",
-                    tryUrl:"https://github.com"
+                    imageUrl:"image/test.png",
+                    desUrl:"https://github.com/zzsxzc",
+                    appUrl:"https://github.com/zzsxzc"
                 }
             ]
         }
