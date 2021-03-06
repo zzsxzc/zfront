@@ -36,8 +36,8 @@
 <div style="padding:20px;margin-top:30px;background-color:#fbfbfb;height:800px;">
 <h1>WebAPP</h1>
  
-<div id="zapplist" v-for="app in applist">
-    <div class="flow">
+<div id="zapplist">
+    <div class="flow" v-for="app in applist">
         <h2>{{app.name}}</h2>
         <div class="image">
             <img width=200 heigth=200 v-bind:src="app.imageUrl">
@@ -82,6 +82,12 @@
             applist:[
                 {
                     name:"应用名",
+                    imageUrl:"image/test.png",
+                    desUrl:"https://github.com/zzsxzc",
+                    appUrl:"https://github.com/zzsxzc"
+                },
+                {
+                    name:"应用名2",
                     imageUrl:"image/test.png",
                     desUrl:"https://github.com/zzsxzc",
                     appUrl:"https://github.com/zzsxzc"
